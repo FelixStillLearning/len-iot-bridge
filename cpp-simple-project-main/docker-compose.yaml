@@ -1,0 +1,14 @@
+networks:
+  default:
+    name: cms_network
+    external: true
+
+services:
+  simple-project:
+    privileged: true  
+    restart: always
+    build:
+      context: .
+    container_name: simple-project
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
