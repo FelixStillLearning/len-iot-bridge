@@ -225,6 +225,39 @@ Fix:
 hash -r
 ```
 
+### Error 21: Permission Denied saat Compile
+/usr/bin/ld: cannot open output file classnobject: Permission denied
+
+Penyebab: Folder dimiliki oleh root, user biasa tidak bisa write file di folder tersebut.
+
+Fix:
+```bash
+sudo chown -R felixrdev:felixrdev ~/workspace/len-iot-bridge/CPP_OOP
+
+# Sekarang compile lagi
+g++ -o classnobject Classnobject.cpp
+./classnobject
+```
+
+### Error 22: Git Dubious Ownership
+fatal: detected dubious ownership in repository at '/home/felixrdev/workspace/len-iot-bridge'
+
+Penyebab: Folder dimiliki oleh root, tapi diakses sebagai user biasa.
+
+Fix:
+```bash
+# Option 1: Ubah ownership
+sudo chown -R felixrdev:felixrdev ~/workspace/len-iot-bridge
+
+# Option 2: Atau allow folder di git config
+git config --global --add safe.directory /home/felixrdev/workspace/len-iot-bridge
+
+# Sekarang coba lagi
+git status
+git add .
+git commit -m "docs: tambah error dan solusi"
+```
+
 ---
 
 Status Akhir Environment: GCC/G++ 11.5.0, CMake 3.31.0, Conan 2.25.1, Python 3.12, C++17, Ubuntu 24.04 (WSL)
