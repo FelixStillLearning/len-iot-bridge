@@ -22,4 +22,9 @@ int main(){
     employee1.Age = 25;
 
     employee1.IntroduceYourself();
+
+    Employee employee2;
+    employee2.Name = "Rael";
+    employee2.Company = "BujangCompany";
+    employee2.Age = 21;
 }
