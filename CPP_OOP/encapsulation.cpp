@@ -23,6 +23,7 @@ public:
     }
     // setter and getter Age
     void setAge(int age) {
+        if(age>=18)
         Age = age;
     }
     int getAge() {
@@ -55,5 +56,7 @@ int main(){
     // employee2.Age = 21;
     employee2.IntroduceYourself();
     employee1.setAge(39);
+    employee2.setAge(16);
     std::cout<<employee1.getName()<<" is "<<employee1.getAge()<<" years old" << std::endl;
+    std::cout<<employee2.getName()<<" is "<<employee2.getAge()<<" years old" << std::endl;
 }
