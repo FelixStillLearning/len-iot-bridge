@@ -259,5 +259,19 @@ git commit -m "docs: tambah error dan solusi"
 ```
 
 ---
+### ERROR 23: Izin akses foldee di wsle dari vscode windows 
+Failed to save 'error_dump.md': Unable to write file 'vscode-remote://wsl+ubuntu/home/felixrdev/workspace/len-iot-bridge/docs/error_dump.md' (NoPermissions (FileSystemError): Error: EACCES: permission denied, open '/home/felixrdev/workspace/len-iot-bridge/docs/error_dump.md')
+
+Fix:
+Install extension WSL dan ubah directory permisiion wsl nya menggunakan 
+```bash 
+# Ubah Ownership ke folder user 
+sudo chown -R felixrdev:felixrdev /home/felixrdev/workspace/len-iot-bridge
+# lalu ubah permission memastikan user tersebut memiliki izin
+chmod -R u+rw /home/felixrdev/workspace/len-iot-bridge
+```
+
+
+
 
 Status Akhir Environment: GCC/G++ 11.5.0, CMake 3.31.0, Conan 2.25.1, Python 3.12, C++17, Ubuntu 24.04 (WSL)
