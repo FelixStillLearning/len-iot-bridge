@@ -1,5 +1,5 @@
-# Ubah ownership folder ke user kamu
-sudo chown -R felixrdev:felixrdev ~/workspace/len-iot-bridge/CPP_OOP
+# Ubah ownership folder ke user 
+sudo chown -R felixrdev:felixrdev ~/workspace/len-iot-bridge/
 
 # Atau dari dalam folder
 cd ~/workspace/len-iot-bridge/CPP_OOP
