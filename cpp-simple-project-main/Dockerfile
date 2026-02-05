@@ -26,6 +26,13 @@ RUN apt-get update -y && \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/*
 
+# Install a recent CMake that supports presets v4
+ARG CMAKE_VERSION=3.31.0
+RUN curl -fsSL "https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.tar.gz" -o /tmp/cmake.tar.gz && \
+    tar -xzf /tmp/cmake.tar.gz -C /opt && \
+    ln -sf "/opt/cmake-${CMAKE_VERSION}-linux-x86_64/bin"/* /usr/local/bin/ && \
+    rm /tmp/cmake.tar.gz
+
 # Set a dedicated working directory for your application
 WORKDIR /app
 

@@ -275,3 +275,58 @@ chmod -R u+rw /home/felixrdev/workspace/len-iot-bridge
 
 
 Status Akhir Environment: GCC/G++ 11.5.0, CMake 3.31.0, Conan 2.25.1, Python 3.12, C++17, Ubuntu 24.04 (WSL)
+
+---
+
+## Error Dump 2026-02-05
+
+### Error 24: Docker permission denied (docker.sock)
+unable to get image 'cpp-simple-project-main-simple-project': permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock
+
+Penyebab: User belum punya akses ke Docker socket.
+
+Fix:
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps
+```
+Jika masih gagal, logout/login ulang atau restart WSL. Alternatif cepat: `sudo docker compose up -d --build`.
+
+### Error 25: cmake: not found saat build Docker
+/bin/sh: 1: cmake: not found
+
+Penyebab: Image build tidak memasang CMake.
+
+Fix:
+Tambahkan instalasi CMake di Dockerfile build stage, lalu build ulang.
+
+### Error 26: CMake preset version tidak dikenal
+CMake Error: Could not read presets from /app: Unrecognized "version" field
+
+Penyebab: CMake di container terlalu lama dan tidak support `version: 4`.
+
+Fix:
+Install CMake versi terbaru (>= 3.23) di Dockerfile. Contoh: install CMake 3.31 dari Kitware, lalu rebuild image.
+
+### Error 27: External network tidak ditemukan
+network cms_network declared as external, but could not be found
+
+Penyebab: `docker-compose.yml` butuh network external `cms_network`, tapi network belum dibuat.
+
+Fix:
+```bash
+sudo docker network create cms_network
+sudo docker compose up -d
+```
+
+### Error 28: docker compose ps kosong setelah build
+`docker compose ps` kosong meski image sudah build.
+
+Penyebab: `docker compose build` hanya membuat image, belum menjalankan container.
+
+Fix:
+```bash
+sudo docker compose up -d
+sudo docker compose ps
+```
