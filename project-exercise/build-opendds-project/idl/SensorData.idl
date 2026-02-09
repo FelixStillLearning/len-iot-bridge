@@ -1,0 +1,8 @@
+module SmartHome {
+    @topic
+    struct Thermometer {
+        @key string room_id; 
+        float temperature;
+        string status; 
+    };
+};

@@ -56,3 +56,5 @@ Thumbs.db
 
 #private project
 simple-grpc-cpp/
+simple-odds-cpp/
+cpp-simple-project-main/

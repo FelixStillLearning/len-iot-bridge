@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  monitor:
+    build: .
+    container_name: smart_home_monitor
+    command: ./subscriber -DCPSConfigFile rtps.ini
+    environment:
+      - UNASSIGNED_ACCESS_POINT=1
+    networks:
+      - dds-net
+
+  sensor:
+    build: .
+    container_name: smart_home_sensor
+    command: ./publisher -DCPSConfigFile rtps.ini
+    depends_on:
+      - monitor
+    environment:
+      - UNASSIGNED_ACCESS_POINT=1
+    networks:
+      - dds-net
+
+networks:
+  dds-net:
+    driver: bridge
