@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     curl \
     iproute2 \
     perl \
-    protobuf-compiler \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install conan && conan profile detect --force
@@ -65,15 +64,12 @@ WORKDIR /app/bin
 ENV DDS_ROOT="/opt/OpenDDS" \
     ACE_ROOT="/opt/OpenDDS/ACE_wrappers" \
     TAO_ROOT="/opt/OpenDDS/ACE_wrappers/TAO" \
-    LD_LIBRARY_PATH="/opt/OpenDDS/lib:/opt/OpenDDS/ACE_wrappers/lib:/opt/OpenDDS/ACE_wrappers/TAO/lib:${LD_LIBRARY_PATH}"
+    LD_LIBRARY_PATH="/opt/OpenDDS/lib:/opt/OpenDDS/ACE_wrappers/lib:${LD_LIBRARY_PATH}"
 
 COPY --from=builder /opt/OpenDDS/lib /opt/OpenDDS/lib
 COPY --from=builder /opt/OpenDDS/ACE_wrappers/lib /opt/OpenDDS/ACE_wrappers/lib
-COPY --from=builder /opt/OpenDDS/ACE_wrappers/TAO/lib /opt/OpenDDS/ACE_wrappers/TAO/lib
 
-COPY --from=builder /app/build/Release /app/bin
-COPY --from=builder /app/rtps.ini /app/bin/rtps.ini
-
-EXPOSE 50051 9002
+COPY --from=builder /app/build/build/Release /app/bin
+EXPOSE 50051
 
 CMD ["./grpc_gateway"]

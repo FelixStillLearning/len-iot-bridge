@@ -12,13 +12,18 @@ set(PROTO_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/proto")
 set(PROTO_BINARY_DIR "${CMAKE_CURRENT_BINARY_DIR}/proto_gen")
 file(MAKE_DIRECTORY ${PROTO_BINARY_DIR})
 set(GRPC_CPP_PLUGIN_EXECUTABLE $<TARGET_FILE:gRPC::grpc_cpp_plugin>)
+if(TARGET protobuf::protoc)
+    set(PROTOC_EXECUTABLE $<TARGET_FILE:protobuf::protoc>)
+else()
+    set(PROTOC_EXECUTABLE ${Protobuf_PROTOC_EXECUTABLE})
+endif()
 
 add_custom_command(
     OUTPUT "${PROTO_BINARY_DIR}/Sensor.grpc.pb.cc"
            "${PROTO_BINARY_DIR}/Sensor.grpc.pb.h"
            "${PROTO_BINARY_DIR}/Sensor.pb.cc"
            "${PROTO_BINARY_DIR}/Sensor.pb.h"
-    COMMAND protoc
+    COMMAND ${PROTOC_EXECUTABLE}
     ARGS --grpc_out="${PROTO_BINARY_DIR}"
          --cpp_out="${PROTO_BINARY_DIR}"
          -I "${PROTO_SRC_DIR}"
