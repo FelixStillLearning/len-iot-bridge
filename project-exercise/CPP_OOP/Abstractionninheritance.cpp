@@ -13,21 +13,18 @@ private:
 protected:
     string Name;
 public: 
-    // setter and getter Name 
     void setName(string name) {
         Name = name;
     }
     string getName() {
         return Name;
     }
-    // setter and getter Company
     void setCompany(string company) {
         Company = company;
     }
     string getCompany() {
         return Company;
     }
-    // setter and getter Age
     void setAge(int age) {
         if(age>=18)
         Age = age;
@@ -52,9 +49,6 @@ public:
         else 
             cout << Name << " Nope youre Not" << endl;
     }
-    virtual void work() {
-        cout << Name << " is checking email, and performing tasks " << endl;
-    }
 };
 
 class Developer: public Employee {
@@ -66,9 +60,6 @@ public:
     void fixBug(){
         cout << Name << " sedang fixbug di bahasa "  << Favprograminglanguage << endl;
     }
-    void work() {
-        cout << Name << " sedang menulis Kode " << Favprograminglanguage << endl;
-    }
 
 };
 
@@ -79,10 +70,7 @@ public:
         Subject = subject;
     }
     void PreparedLesson() {
-        cout << Name << " sedang menyiapkan di mata pelajaran "  << Subject << endl;
-    }
-    void work() {
-        cout << Name << " sedang mengajar mata pelajaran " << Subject << endl;
+        cout << Name << " sedang mengajar di mata pelajaran "  << Subject << endl;
     }
 };
 
@@ -97,14 +85,5 @@ int main(){
 
     teacher1.PreparedLesson();
     teacher1.AskForPromotion();
-
-    developer1.work();
-    teacher1.work();
-
-    Employee* e1 = &developer1;
-    Employee* e2 = &teacher1;
-
-    e1->work();
-    e2->work();
 
 }

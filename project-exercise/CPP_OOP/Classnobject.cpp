@@ -22,15 +22,9 @@ public:
 
 int main(){
     Employee employee1 = Employee("Felix", "pt len industri", 25);
-    // employee1.Name = "Felix";
-    // employee1.Company = "SomeCompany";
-    // employee1.Age = 25;
 
     employee1.IntroduceYourself();
 
     Employee employee2 = Employee("Rael","Itenas",21);
-    // employee2.Name = "Rael";
-    // employee2.Company = "BujangCompany";
-    // employee2.Age = 21;
     employee2.IntroduceYourself();
 }

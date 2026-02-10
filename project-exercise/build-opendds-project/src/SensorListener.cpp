@@ -21,7 +21,6 @@ void SensorListener::on_data_available(DDS::DataReader_ptr reader) {
     }
 }
 
-// Empty implementations
 void SensorListener::on_requested_deadline_missed(DDS::DataReader_ptr, const DDS::RequestedDeadlineMissedStatus&) {}
 void SensorListener::on_requested_incompatible_qos(DDS::DataReader_ptr, const DDS::RequestedIncompatibleQosStatus&) {}
 void SensorListener::on_sample_rejected(DDS::DataReader_ptr, const DDS::SampleRejectedStatus&) {}

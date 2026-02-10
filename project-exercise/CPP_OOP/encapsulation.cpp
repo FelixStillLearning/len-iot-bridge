@@ -7,21 +7,18 @@ private:
     string Company;
     int Age;
 public: 
-    // setter and getter Name 
     void setName(string name) {
         Name = name;
     }
     string getName() {
         return Name;
     }
-    // setter and getter Company
     void setCompany(string company) {
         Company = company;
     }
     string getCompany() {
         return Company;
     }
-    // setter and getter Age
     void setAge(int age) {
         if(age>=18)
         Age = age;
@@ -44,16 +41,10 @@ public:
 
 int main(){
     Employee employee1 = Employee("Felix", "pt len industri", 25);
-    // employee1.Name = "Felix";
-    // employee1.Company = "SomeCompany";
-    // employee1.Age = 25;
 
     employee1.IntroduceYourself();
 
     Employee employee2 = Employee("Rael","Itenas",21);
-    // employee2.Name = "Rael";
-    // employee2.Company = "BujangCompany";
-    // employee2.Age = 21;
     employee2.IntroduceYourself();
     employee1.setAge(39);
     employee2.setAge(16);

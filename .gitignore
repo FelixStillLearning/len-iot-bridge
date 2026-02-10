@@ -10,6 +10,7 @@ CMakeFiles/
 CMakePresets.json
 CMakeUserPresets.json
 cmake_install.cmake
+compile_commands.json
 
 # Conan
 .conan2/
@@ -53,6 +54,15 @@ Thumbs.db
 
 # Runtime
 *.ior
+
+# Common output folders
+bin/
+lib/
+Release/
+Debug/
+
+# Generated sources
+proto_gen/
 
 #private project
 simple-grpc-cpp/

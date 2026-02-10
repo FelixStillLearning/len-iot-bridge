@@ -9,7 +9,6 @@ class SensorListener : public virtual OpenDDS::DCPS::LocalObject<DDS::DataReader
 public:
     virtual void on_data_available(DDS::DataReader_ptr reader);
 
-    // Boilerplate functionsx   
     virtual void on_requested_deadline_missed(DDS::DataReader_ptr, const DDS::RequestedDeadlineMissedStatus&);
     virtual void on_requested_incompatible_qos(DDS::DataReader_ptr, const DDS::RequestedIncompatibleQosStatus&);
     virtual void on_sample_rejected(DDS::DataReader_ptr, const DDS::SampleRejectedStatus&);

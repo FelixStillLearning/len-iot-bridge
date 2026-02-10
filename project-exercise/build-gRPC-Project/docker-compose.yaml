@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  grpc-gateway:
+    build: .
+    container_name: len_iot_gateway
+    ports:
+      - "50051:50051"
+    restart: always
