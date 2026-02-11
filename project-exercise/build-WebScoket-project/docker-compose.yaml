@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  iot-bridge:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: len-iot-gateway
+    restart: unless-stopped
+    ports:
+      - "50051:50051" 
+      - "9002:9002"   
+    networks:
+      - iot-network
+
+networks:
+  iot-network:
+    driver: bridge

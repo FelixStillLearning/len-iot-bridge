@@ -1,0 +1,6 @@
+build/
+cmake-build-*/
+proto_gen/
+.git/
+.vscode/
+.env
