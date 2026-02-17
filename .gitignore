@@ -57,7 +57,7 @@ Thumbs.db
 
 # Common output folders
 bin/
-lib/
+lib/`
 Release/
 Debug/
 
