@@ -1,3 +1,4 @@
+#include <future>
 #include <iostream>
 #include <string>
 
@@ -16,11 +17,21 @@ public:
               << "dengan jumlah : " << this->jumlah_produk
               << "dan harga : " << this->harga_produk << std::endl;
   }
+  Produk &atur_nama(std::string nama_produk) {
+    this->nama_produk = nama_produk;
+    std::cout << "nama produk telah diubah menjadi: " << this->nama_produk
+              << std::endl;
+    return *this;
+  }
   void tampilkan_info_produk() {
     std::cout << "nama produk : " << this->nama_produk << std::endl;
     std::cout << "harga produk : " << this->harga_produk << std::endl;
     std::cout << "jumlah produk : " << this->jumlah_produk << std::endl;
     std::cout << "lokasi objek berada di : " << this << std::endl;
+  }
+
+  bool apakah_harga_sama(const Produk &produk_lain) {
+    return this->harga_produk == produk_lain.harga_produk;
   }
 };
 int main() {
@@ -30,5 +41,13 @@ int main() {
   Produk SmartPhone("Samsung Galazy", 16'000, 10);
   SmartPhone.tampilkan_info_produk();
 
+  if (Laptop.apakah_harga_sama(SmartPhone)) {
+    std::cout << "harga laptop dan smartphone sama " << std::endl;
+
+  } else {
+    std::cout << "harga laptop dan smartphone tidak sama " << std::endl;
+  }
+
+  Laptop.atur_nama("Lenovo Ideapad Slim 5i");
   return 0;
 }
